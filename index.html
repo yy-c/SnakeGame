@@ -34,7 +34,6 @@
     }
     .snake {
       background: #4caf50;
-      /* 透明度由JS动态设置 */
       transition: opacity 0.15s;
     }
     .food {
@@ -91,7 +90,7 @@
   </style>
 </head>
 <body>
-  <h1>Snake Game</h1>
+  <h1>Snake</h1>
   <label for="difficulty">Difficulty: </label>
   <select id="difficulty">
     <option value="180">Easy</option>
@@ -125,11 +124,9 @@
         for (let x = 0; x < boardSize; x++) {
           const cell = document.createElement('div');
           cell.classList.add('cell');
-          // 判断是否为蛇身体
           const snakeIndex = snake.findIndex(s => s.x === x && s.y === y);
           if (snakeIndex !== -1) {
             cell.classList.add('snake');
-            // 头部opacity=1，尾部最低0.3，线性递减
             const minOpacity = 0.3;
             const maxOpacity = 1;
             const opacity = maxOpacity - (maxOpacity-minOpacity) * (snakeIndex/(snake.length-1||1));
@@ -231,4 +228,5 @@
     startBtn.style.display = '';
   </script>
 </body>
+
 </html>
